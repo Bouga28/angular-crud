@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Resource } from './resource';
+import { PaginatedResource } from './paginated-resource';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class ResourcesService {
    }
 
    getById(id: number) {
-    return this.http.get<Resource>(`http://127.0.0.1:8000/api/resource/${id}`);
+    return this.http.get<Resource[]>(`http://127.0.0.1:8000/api/resourcebyid/${id}`);
    }
 
    delete(id:number){

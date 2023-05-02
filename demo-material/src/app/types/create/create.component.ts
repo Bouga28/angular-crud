@@ -23,6 +23,7 @@ import { TypeService } from '../type.service';
     ngOnInit(): void {}
    
     create(){
+      console.log("DATA TO SAVE : ",this.typeForm);
       this.typeService.create(this.typeForm)
       .subscribe({
         next:(data) => {

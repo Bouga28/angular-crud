@@ -32,6 +32,9 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardUserComponent } from './board-user/board-user.component';
 import { FormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import {MatSelectModule} from '@angular/material/select';
+import { UsersModule } from './users/users.module';
+
 
 @NgModule({
   imports: [
@@ -46,15 +49,16 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     MatIconModule,
     MatDividerModule,
     MatFormFieldModule,
-
-    ResourcesModule,
-    ReservationsModule,
-    TypesModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReservationsModule,
+    TypesModule,
+    ResourcesModule,
+    UsersModule
   ],
   declarations: [
     AppComponent,
@@ -69,7 +73,10 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+
+
+    
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

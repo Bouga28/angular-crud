@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Type } from '../type';
 import { TypeService } from '../type.service';
 
@@ -23,7 +24,7 @@ declare var window: any;
     feedback: any = {};
 
 
-    constructor(private typeService: TypeService) {}
+    constructor(private typeService: TypeService, private router:Router,) {}
    
     ngOnInit(): void {
 
@@ -50,9 +51,9 @@ declare var window: any;
       if (confirm('Are you sure?')) {
         this.typeService.delete(type.id).subscribe(() => {
             this.feedback = {type: 'success', message: 'Delete was successful!'};
-            setTimeout(() => {
-              
-            }, 1000);
+      
+              location.reload();
+  
           },
           err => {
             this.feedback = {type: 'warning', message: 'Error deleting.'};

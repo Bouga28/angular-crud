@@ -40,6 +40,7 @@ export class CreateComponent implements OnInit {
 
 
   create(){
+    console.log("RessourceForm : ", this.resourceForm);
     this.resourceService.create(this.resourceForm)
     .subscribe({
       next:(data) => {
@@ -49,5 +50,9 @@ export class CreateComponent implements OnInit {
         console.log(err);
       }
     })
+  }
+
+  cancel() {
+    this.router.navigate(['/resources']);
   }
 }

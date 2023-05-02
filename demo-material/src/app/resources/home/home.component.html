@@ -1,61 +1,44 @@
 
-<div *ngIf="resources && !service.isLoading">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+    <li class="breadcrumb-item active">Resources</li>
+  </ol>
+</nav>
+<h2>Resources List</h2>
+<a [routerLink]="['../create' ]" mat-mini-fab color="accent"><mat-icon>add</mat-icon></a>
 
 
-  <div class="container">
+  <div *ngIf="feedback.length" class="alert alert-{{feedback.type}}">{{ feedback.message }}</div>
 
-    <div class="row mt-2">
-      <div class="col col-md-4 offset-md-4">
-        <a class="btn btn-primary" routerLink="/resources/create">Nouvelle ressource</a>
-      </div>
-    </div>
+  <table mat-table #table [dataSource]="allResources.data">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{item.id}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{item.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{item.description}} </mat-cell>
+    </ng-container>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Description</th>
-          <th scope="col">Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let r of resources.data">
-          <th scope="row">{{ r.id }}</th>
-          <td>{{ r.name }}</td>
-          <td>{{ r.description }}</td>
-          <td>{{ r.type.name }}</td>
-          <td>
-            <a class="btn btn-primary" [routerLink]="['/resources/edit/', r.id]">Edit</a>
-            <button type="button" (click)="openDeleteModal(r.id)" class="btn btn-danger">Delete</button>
-          </td>          
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{item.type.name}} </mat-cell>
+    </ng-container>
 
-  <!--p>Liste des resources {{resources.from}} to {{resources.to}} of {{resources.total}}</p-->
-  <p>Page {{resources.current_page}} of {{resources.last_page}}</p>
-  <button (click)="prevPage()" [disabled]="!resources.prev_page_url" >Prev</button>
-  <button (click)="nextPage()" [disabled]="!resources.next_page_url">Next</button> 
-</div>
-<p *ngIf="service.isLoading">Loading...</p>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let item">
+        <a [routerLink]="['../edit', item.id ]" mat-raised-button color="primary">Edit</a>&nbsp;
+        <button (click)="delete(item)" mat-button color="warn"><mat-icon>delete</mat-icon></button>
+      </mat-cell>
+    </ng-container>
 
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Warning!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you sure to delete the item?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" (click)="delete()">Confirm Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
+

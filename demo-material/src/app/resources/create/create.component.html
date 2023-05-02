@@ -1,4 +1,40 @@
-<div class="container">
+<h2>CREATE RESSOURCES</h2>
+<form  #editForm="ngForm" (ngSubmit)="create()">
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="resourceForm.name" id="name" name="name">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="resourceForm.description" id="description" name="description">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+
+
+    <mat-select [(ngModel)]="resourceForm.type_id" id="type_id" name="type_id">
+      <mat-option *ngFor="let item of TypeList" [value]="item.id">
+        {{item.name}}
+      </mat-option>
+    </mat-select>
+
+
+  </mat-form-field>
+  <br>
+
+
+  <div class="button-row" role="group">
+    <button type="submit" mat-raised-button color="primary" >Save</button>
+    <button type="button" mat-button color="accent" (click)="cancel()">Cancel</button>
+  </div>
+
+
+<!--div class="container">
     <legend>Nouvelle Resource</legend>
     <form>
       <div class="mb-3">
@@ -12,7 +48,7 @@
       <div class="mb-3">
         <label class="form-label">Type</label>
       <select class="dropdownlist" [(ngModel)]="resourceForm.type_id" name="type" class="form-control">
-        <!--option value="" selected="selected" disabled="disabled">test</option-->
+     
         <option *ngFor="let item of TypeList" [value]="item.id">
           {{item.name}}
         </option>
@@ -20,4 +56,4 @@
       </div>
       <button type="button" (click)="create()" class="btn btn-primary">Create</button>
     </form>
-  </div>
+  </div-->
