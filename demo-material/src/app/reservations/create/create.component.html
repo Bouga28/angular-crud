@@ -1,0 +1,33 @@
+<div class="container">
+    <legend>Create Reservation</legend>
+    <form>
+      <div class="mb-3">
+        <label for="txtDeb" class="form-label">Name</label>
+        <input type="date" name="deb" [(ngModel)] = "reservationForm.deb" class="form-control" id="txtDeb" />
+      </div>
+      
+      <div class="mb-3">
+        <label for="txtFin" class="form-label">Slug</label>
+        <input type="date" name="fin" [(ngModel)] = "reservationForm.fin" class="form-control" id="txtFin" />
+      </div>
+
+      <div class="mb-3">
+        <label for="txtApproval" class="form-label">Decision</label>
+        <input type="number" name="approval" [(ngModel)] = "reservationForm.approval" class="form-control" id="txtApproval" />
+      </div>
+
+
+      <div class="mb-3">
+        <label for="txtResourceId" class="form-label">Ressource</label>
+        <input type="number" name="resource_id" [(ngModel)] = "reservationForm.resource_id" class="form-control" id="txtResourceId" />
+      </div>
+
+
+      <div class="mb-3">
+        <label for="txtReservatioId" class="form-label">User</label>
+        <input type="number" name="user_id" [(ngModel)] = "reservationForm.user_id" class="form-control" id="txtReservatioId" />
+      </div>
+
+      <button type="button" (click)="create()" class="btn btn-primary">Create</button>
+    </form>
+  </div>

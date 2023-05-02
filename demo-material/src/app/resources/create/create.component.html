@@ -1,0 +1,23 @@
+<div class="container">
+    <legend>Nouvelle Resource</legend>
+    <form>
+      <div class="mb-3">
+        <label for="txtName" class="form-label">Nom</label>
+        <input type="text" name="name" [(ngModel)] = "resourceForm.name" class="form-control" id="txtName" />
+      </div>
+      <div class="mb-3">
+        <label for="txtDescription" class="form-label">Description</label>
+        <input type="text" name="description" [(ngModel)] = "resourceForm.description" class="form-control" id="txtDescription" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Type</label>
+      <select class="dropdownlist" [(ngModel)]="resourceForm.type_id" name="type" class="form-control">
+        <!--option value="" selected="selected" disabled="disabled">test</option-->
+        <option *ngFor="let item of TypeList" [value]="item.id">
+          {{item.name}}
+        </option>
+      </select>
+      </div>
+      <button type="button" (click)="create()" class="btn btn-primary">Create</button>
+    </form>
+  </div>

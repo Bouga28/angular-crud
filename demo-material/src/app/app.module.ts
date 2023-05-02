@@ -18,6 +18,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { ResourcesModule } from './resources/resources.module';
+import { TypesModule } from './types/types.module';
+
+
+import { ReservationsModule } from './reservations/reservations.module';
+import { LoginComponent } from './login/login.component';
+
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { FormsModule } from '@angular/forms';
+import { httpInterceptorProviders } from './_helpers/http.interceptor';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -30,15 +45,33 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+
+    ResourcesModule,
+    ReservationsModule,
+    TypesModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
     SidebarComponent,
     NavbarComponent,
     HomeComponent,
+    AppComponent,
+    NavbarComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {
