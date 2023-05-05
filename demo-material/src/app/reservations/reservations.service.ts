@@ -14,7 +14,7 @@ export class ReservationsService {
 
   
   get(): Observable<any>  {
-    return this.http.get<Reservation[]>('http://127.0.0.1:8000/api/reservation');
+    return this.http.get<Reservation[]>('http://127.0.0.1:8000/api/reservations');
   }
   create(payload: Reservation) {
     return this.http.post<Reservation>('http://127.0.0.1:8000/api/reservation', payload);

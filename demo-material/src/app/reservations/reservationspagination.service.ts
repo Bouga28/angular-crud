@@ -13,7 +13,7 @@ export class ReservationspaginationService {
     getReservations(): Promise<PaginatedReservations>{
       console.log("GET Reservations WITH PAGIMATION...... ");
         this.isLoading = true;
-        return this.http.get('http://127.0.0.1:8000/api/reservation')
+        return this.http.get('http://127.0.0.1:8000/api/reservations')
         .toPromise()
         .then((response) => {
           console.log("RESPONSE : ", response);
