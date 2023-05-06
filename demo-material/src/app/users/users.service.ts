@@ -16,21 +16,21 @@ export class UsersService {
 
   
   get(): Observable<any>  {
-    return this.http.get<User[]>('http://127.0.0.1:8000/api/user');
+    return this.http.get<User[]>('http://127.0.0.1:8000/api/users');
   }
   create(payload: User) {
-    return this.http.post<User>('http://127.0.0.1:8000/api/type', payload);
+    return this.http.post<User>('http://127.0.0.1:8000/api/users', payload);
   }
 
   update(payload:User){
-    return this.http.put(`http://127.0.0.1:8000/api/type/${payload.id}`,payload);
+    return this.http.put(`http://127.0.0.1:8000/api/users/${payload.id}`,payload);
    }
 
    getById(id: number) {
-    return this.http.get<User>(`http://127.0.0.1:8000/api/type/${id}`);
+    return this.http.get<User>(`http://127.0.0.1:8000/api/users/${id}`);
    }
 
    delete(id:number){
-    return this.http.delete<User>(`http://127.0.0.1:8000/api/type/${id}`);
+    return this.http.delete<User>(`http://127.0.0.1:8000/api/users/${id}`);
  }
 }

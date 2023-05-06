@@ -32,7 +32,7 @@ export const APP_ROUTES: Routes = [
   {
     path: 'users',
     redirectTo: 'users/home',
-    pathMatch: 'full',
+
   },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },

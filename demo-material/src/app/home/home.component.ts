@@ -1,5 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import { AuthService } from '../_services/auth.service';
+import { StorageService } from '../_services/storage.service';
+import { EventBusService } from '../_shared/event-bus.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +13,10 @@ import {ActivatedRoute} from '@angular/router';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private storageService: StorageService,
+    private authService: AuthService,
+    private eventBusService: EventBusService) {
   }
 
   needsLogin: boolean | undefined;
@@ -28,7 +34,21 @@ export class HomeComponent implements OnInit {
     this._userName = 'Max';
   }
 
+
   logout(): void {
-    this._userName = '';
+    this.storageService.clean();
+    this.authService.logout().subscribe({
+      next: res => {
+        console.log(res);
+       // this.storageService.clean();
+
+        window.location.reload();
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
   }
+
+
 }
