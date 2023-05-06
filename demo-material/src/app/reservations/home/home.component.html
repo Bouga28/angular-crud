@@ -18,16 +18,45 @@
     </ng-container>
     <ng-container matColumnDef="deb">
       <mat-header-cell *matHeaderCellDef> Debut </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.deb}} </mat-cell>
+      <mat-cell *matCellDef="let item"> {{item.deb | date :'dd/MM/YYYY'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="heuredeb">
+      <mat-header-cell *matHeaderCellDef> Heure Deb </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{item.heuredeb}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="fin">
-      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.fin}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Fin </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{item.fin | date :'dd/MM/YYYY'}} </mat-cell>
     </ng-container>
-
+    <ng-container matColumnDef="heurefin">
+      <mat-header-cell *matHeaderCellDef> Heure Fin </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{item.heurefin}} </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="approval">
       <mat-header-cell *matHeaderCellDef> Decision </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{item.approval}} </mat-cell>
+
+      <mat-cell *matCellDef="let item"> 
+        <mat-slide-toggle
+        class="example-margin"
+        [color]="color"
+        [checked]="item.approval"
+        [disabled]="disabled">
+    
+    </mat-slide-toggle>
+  </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="validation">
+      <mat-header-cell *matHeaderCellDef> Validation </mat-header-cell>
+      <mat-cell *matCellDef="let item"> 
+        <mat-slide-toggle
+        class="example-margin"
+        [color]="color"
+        [checked]="item.validation"
+        [disabled]="disabled">
+    
+    </mat-slide-toggle>
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="ressource">

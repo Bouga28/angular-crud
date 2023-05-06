@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
 import { Reservation } from '../reservation';
 import { ReservationsService } from '../reservations.service';
+import { Time } from "@angular/common";
 
 @Component({
   selector: 'app-create',
@@ -13,8 +15,11 @@ import { ReservationsService } from '../reservations.service';
     reservationForm: Reservation = {
       id: 0,
       deb: new Date(Date.now()) ,
+      heuredeb: '00:00:00' ,
       fin:  new Date(Date.now()),
+      heurefin: '00:00:00'  ,
       approval: false,
+      validation: false,
       resource_id:0,
       user_id: 0,
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { PaginatedReservations } from '../paginated-reservations';
 import { Reservation } from '../reservation';
@@ -13,7 +14,7 @@ declare var window: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   styles: [
-    'table { min-width: 600px }',
+    'table { min-width: 1200px }',
   ]
 })
 
@@ -21,8 +22,11 @@ declare var window: any;
     allReservations!: PaginatedReservations;
     deleteModal: any;
     idTodelete: number = 0;
+    color: ThemePalette = 'accent';
+    checked = false;
+    disabled = false;
 
-    displayedColumns = ['id', 'deb', 'fin', 'approval','ressource','user', 'actions'];
+    displayedColumns = ['id', 'deb', 'heuredeb','fin', 'heurefin', 'approval','validation','ressource','user', 'actions'];
 
     selectedReservation!: Reservation;
     feedback: any = {};
