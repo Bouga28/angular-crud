@@ -1,46 +1,65 @@
 <div class="container">
     <legend>Create Reservation</legend>
-    <form>
-      <div class="mb-3">
-        <label for="txtDeb" class="form-label">Name</label>
-        <input type="date" name="deb" [(ngModel)] = "reservationForm.deb" class="form-control" id="txtDeb" />
-      </div>
-      
 
-      <div class="mb-3">
-        <label for="txtHeuredeb" class="form-label">Slug</label>
-        <input type="time" name="heuredeb" [(ngModel)] = "reservationForm.heuredeb" class="form-control" id="txtHeuredeb" />
-      </div>
+    <br><br>
 
-      <div class="mb-3">
-        <label for="txtFin" class="form-label">Slug</label>
-        <input type="date" name="fin" [(ngModel)] = "reservationForm.fin" class="form-control" id="txtFin" />
-      </div>
+    <form #editForm="ngForm" (ngSubmit)="create()">
 
 
-      <div class="mb-3">
-        <label for="txtHeurefin" class="form-label">Slug</label>
-        <input type="time" name="heurefin" [(ngModel)] = "reservationForm.heurefin" class="form-control" id="txtHeurefin" />
-      </div>
+
+      <mat-form-field>
+        <mat-label>Date debut</mat-label>
+        <input matInput [(ngModel)]="reservationForm.deb" id="deb" name="deb">
+      </mat-form-field>
+
+      <br><br>
+        <mat-form-field>
+          <mat-label>Heure debut</mat-label>
+          <input matInput [(ngModel)]="reservationForm.heuredeb" id="heuredeb" name="heuredeb">
+        </mat-form-field>
+
+        <br><br>
+        <mat-form-field>
+          <mat-label>Date Fin</mat-label>
+          <input matInput [(ngModel)]="reservationForm.fin" id="fin" name="fin">
+        </mat-form-field>
+  
+        <br><br>
+          <mat-form-field>
+            <mat-label>Heure Fin</mat-label>
+            <input matInput [(ngModel)]="reservationForm.heurefin" id="heurefin" name="heurefin">
+          </mat-form-field>
+
+          <br><br>
 
 
-      <div class="mb-3">
-        <label for="txtApproval" class="form-label">Decision</label>
-        <input type="number" name="approval" [(ngModel)] = "reservationForm.approval" class="form-control" id="txtApproval" />
-      </div>
+
+      <mat-form-field>
+        <mat-label>Ressource</mat-label>
+    
+    
+        <mat-select [(ngModel)]="reservationForm.resource_id" id="resource_id" name="resource_id">
+          <mat-option *ngFor="let item of RessourceList" [value]="item.id">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+    
+    
+      </mat-form-field>
 
 
-      <div class="mb-3">
-        <label for="txtResourceId" class="form-label">Ressource</label>
-        <input type="number" name="resource_id" [(ngModel)] = "reservationForm.resource_id" class="form-control" id="txtResourceId" />
-      </div>
 
+
+      <br><br>
 
       <div class="mb-3">
         <label for="txtReservatioId" class="form-label">User</label>
-        <input type="number" name="user_id" [(ngModel)] = "reservationForm.user_id" class="form-control" id="txtReservatioId" />
+        <input type="number" name="user_id" [(ngModel)] = "reservationForm.user_id" class="form-control" id="txtReservatioId" disabled/>
       </div>
-
-      <button type="button" (click)="create()" class="btn btn-primary">Create</button>
+      <br><br>
+      <div class="button-row" role="group">
+        <button type="submit" mat-raised-button color="primary" >Save</button>
+        <button type="button" mat-button color="accent" (click)="cancel()">Cancel</button>
+      </div>
     </form>
   </div>

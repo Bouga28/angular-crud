@@ -40,7 +40,7 @@
         class="example-margin"
         [color]="color"
         [checked]="item.approval"
-        [disabled]="!showRHBoard || !showAdminBoard">
+        [disabled]="showRHBoard || showAdminBoard">
     
     </mat-slide-toggle>
   </mat-cell>
@@ -54,7 +54,7 @@
         class="example-margin"
         [color]="color"
         [checked]="item.validation"
-        [disabled]="!showAdminBoard">
+        [disabled]="showAdminBoard">
     
     </mat-slide-toggle>
         </mat-cell>

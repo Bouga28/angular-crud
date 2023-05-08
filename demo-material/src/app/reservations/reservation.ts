@@ -1,4 +1,5 @@
 import { Time } from "@angular/common";
+import { Resource } from "../resources/resource";
 
 export interface Reservation {
     id: number;
@@ -10,4 +11,6 @@ export interface Reservation {
     validation: boolean;
     resource_id:number;
     user_id: number;
+
+    
 }
