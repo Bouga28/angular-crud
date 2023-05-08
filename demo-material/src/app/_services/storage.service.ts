@@ -19,7 +19,7 @@ export class StorageService {
     window.sessionStorage.setItem(USER_TOKEN, JSON.stringify(authorisation));
   }
 
-  public getUser(): any {
+  public getToken(): any {
     const token = window.sessionStorage.getItem(USER_TOKEN);
     if (token) {
       return JSON.parse(token);
@@ -28,7 +28,7 @@ export class StorageService {
     return {};
   }
 
-  public getToken(): any {
+  public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
       return JSON.parse(user);

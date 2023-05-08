@@ -19,35 +19,9 @@ export class HomeComponent implements OnInit {
     private eventBusService: EventBusService) {
   }
 
-  needsLogin: boolean | undefined;
-  _userName: string = '';
 
   ngOnInit() {
-    this.needsLogin = !!this.route.snapshot.params['needsLogin'];
-  }
 
-  get userName(): string {
-    return this._userName;
-  }
-
-  login(): void {
-    this._userName = 'Max';
-  }
-
-
-  logout(): void {
-    this.storageService.clean();
-    this.authService.logout().subscribe({
-      next: res => {
-        console.log(res);
-       // this.storageService.clean();
-
-        window.location.reload();
-      },
-      error: err => {
-        console.log(err);
-      }
-    });
   }
 
 

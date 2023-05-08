@@ -41,8 +41,8 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     );*/
 
     let authReq = req;
-    console.log('user : ', this.token.getUser());
-    const token = this.token.getUser().token;
+    console.log('user : ', this.token.getToken());
+    const token = this.token.getToken().token;
     console.log("hello : token +++++++++++ ", token);
     if (token != null) {
       // for Spring Boot back-end

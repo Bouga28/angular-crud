@@ -34,6 +34,12 @@ import { FormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
 import {MatSelectModule} from '@angular/material/select';
 import { UsersModule } from './users/users.module';
+import { CommonModule } from '@angular/common';
+import { ResourcesRoutingModule } from './resources/resources-routing.module';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -59,7 +65,21 @@ import { UsersModule } from './users/users.module';
     ReservationsModule,
     TypesModule,
     ResourcesModule,
-    UsersModule
+    UsersModule,
+
+
+    CommonModule,
+    ResourcesRoutingModule,
+
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+
+
   ],
   declarations: [
     AppComponent,
